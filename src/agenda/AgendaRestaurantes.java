@@ -24,7 +24,7 @@ public class AgendaRestaurantes {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		mongoClient = new MongoClient("192.168.1.52");
-		
+		//-------------------- MENU BASE DE  DATOS-----------------------------
 		while(!selectDB) {
 			
 			System.out.println("Elige una opción: \n" +"1.Listar bases de datos \n"
@@ -63,7 +63,7 @@ public class AgendaRestaurantes {
 			}
 			
 		}//while
-		
+		//-------------------------MENU COLECCIONES--------------------------------
 		while(!selectCollec) {
 			System.out.println("Elige una opción: \n" +"1.Listar colecciones \n"
 					+ "2.Crear coleccion/seleccionar \n"+
@@ -93,7 +93,7 @@ public class AgendaRestaurantes {
 			}
 			
 		}//while
-		
+		//---------------------------MENU OPERACIONES DOCUMENTOS------------------------------------
 		while(true) {
 			System.out.println("Elige una opción: \n" +"1.Listar campos \n"
 					+ "2.listar todos los documentos \n"+
@@ -101,9 +101,11 @@ public class AgendaRestaurantes {
 					"4.Insertar \n"+
 					"5.Actualizar \n"+
 					"6.Borrar \n" +
-					"7.Salir");
+					"7.Listar colecciones \n"+
+					"8.Seleccionar coleccion \n"+
+					"9.Salir");
 			
-			int input = 7;//salir por defecto
+			int input = 9;//salir por defecto
 			try {
 				input = Integer.parseInt(scan.nextLine());
 			}catch(Exception e) {}
@@ -128,6 +130,12 @@ public class AgendaRestaurantes {
 				borrarMuchosDocumentos();
 				break;
 			case 7:
+				listarColecciones();
+				break;
+			case 8:
+				seleccionarColeccion();
+				break;
+			case 9:
 				scan.close();
 				mongoClient.close();
 				System.exit(0);
